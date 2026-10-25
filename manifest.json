@@ -1,0 +1,12 @@
+{
+  "name": "AWAKEN Hunter System",
+  "short_name": "AWAKEN",
+  "description": "A personal RPG-style self-improvement quest system.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#050912",
+  "theme_color": "#050a13",
+  "icons": []
+}

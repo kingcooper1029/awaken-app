@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#050a13">
+  <meta name="description" content="AWAKEN — your personal hunter status and self-improvement system.">
+  <title>AWAKEN | Hunter Status</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">A</span><div><strong>AWAKEN</strong><small>HUNTER SYSTEM</small></div></div>
+    <div class="top-actions"><span class="system-live"><i></i> SYSTEM ONLINE</span><button id="settingsBtn" class="icon-button" aria-label="Settings">⚙</button></div>
+  </header>
+
+  <main id="app">
+    <section class="page active" id="page-home">
+      <div class="eyebrow"><span>PERSONAL STATUS</span><span id="todayLabel"></span></div>
+      <article class="panel hero-panel">
+        <div class="panel-corner corner-tl"></div><div class="panel-corner corner-br"></div>
+        <div class="hero-heading"><div><div class="muted-label">HUNTER</div><h1 id="hunterName">PLAYER</h1></div><div class="rank-badge"><small>RANK</small><strong id="rankValue">E</strong></div></div>
+        <div class="level-line"><div><span class="muted-label">CURRENT LEVEL</span><div class="level-number" id="levelValue">1</div></div><div class="xp-total"><span class="muted-label">TOTAL EXPERIENCE</span><strong id="totalXP">0 XP</strong><span id="nextXPText">100 XP to next level</span></div></div>
+        <div class="xp-track"><div id="xpFill" class="xp-fill"></div><div class="xp-shine"></div></div>
+        <div class="xp-foot"><span id="currentXPText">0 XP</span><span id="nextLevelText">NEXT LEVEL: 100 XP</span></div>
+        <div class="hero-stats">
+          <div class="mini-stat"><span>STRENGTH</span><strong id="strengthValue">1</strong><i>STR</i></div>
+          <div class="mini-stat"><span>AGILITY</span><strong id="agilityValue">1</strong><i>AGI</i></div>
+          <div class="mini-stat"><span>VITALITY</span><strong id="vitalityValue">1</strong><i>VIT</i></div>
+          <div class="mini-stat"><span>DISCIPLINE</span><strong id="disciplineValue">1</strong><i>DIS</i></div>
+        </div>
+      </article>
+
+      <div class="section-heading"><div><span class="section-index">01 //</span><h2>DAILY REPORT</h2></div><span class="tag" id="dailyProgressTag">0 / 4 COMPLETE</span></div>
+      <div class="report-grid">
+        <div class="report-card"><span class="report-icon">✦</span><span class="muted-label">XP EARNED TODAY</span><strong id="todayXP">0</strong><small>EXPERIENCE POINTS</small></div>
+        <div class="report-card"><span class="report-icon">◈</span><span class="muted-label">CURRENT STREAK</span><strong><span id="streakValue">0</span><em> DAYS</em></strong><small>CONSISTENCY BONUS</small></div>
+      </div>
+      <div class="section-heading"><div><span class="section-index">02 //</span><h2>ACTIVE QUESTS</h2></div><button class="text-button" data-go="quests">VIEW ALL ↗</button></div>
+      <div id="homeQuests" class="quest-list"></div>
+      <div class="system-message"><span class="message-symbol">!</span><div><strong>SYSTEM NOTICE</strong><p>Real-world progress is the objective. Rest when needed, set reasonable goals, and keep moving forward.</p></div></div>
+    </section>
+
+    <section class="page" id="page-quests">
+      <div class="page-title"><span class="section-index">02 //</span><h1>QUEST LOG</h1><p>Complete real-world missions to gain experience.</p></div>
+      <div class="tab-row"><button class="filter-tab active" data-filter="daily">DAILY</button><button class="filter-tab" data-filter="weekly">WEEKLY</button><button class="filter-tab" data-filter="all">ALL QUESTS</button></div>
+      <div class="quest-summary panel"><div><span class="muted-label">QUESTS COMPLETED</span><strong id="questCount">0 / 0</strong></div><div class="summary-track"><div id="questSummaryFill"></div></div></div>
+      <div id="allQuests" class="quest-list"></div>
+      <p class="fine-print">Manual quests are self-reported. Only claim a reward after completing the activity. XP is for motivation, not a measure of your worth.</p>
+    </section>
+
+    <section class="page" id="page-character">
+      <div class="page-title"><span class="section-index">03 //</span><h1>HUNTER PROFILE</h1><p>Your growth, recorded by the system.</p></div>
+      <article class="panel profile-panel"><div class="profile-emblem">A</div><div class="profile-info"><span class="muted-label">REGISTERED HUNTER</span><h2 id="profileName">PLAYER</h2><span id="profileRank" class="tag">E-RANK HUNTER</span></div><div class="profile-level"><small>LVL</small><strong id="profileLevel">1</strong></div></article>
+      <div class="section-heading"><div><span class="section-index">01 //</span><h2>ATTRIBUTES</h2></div><span class="muted-label">BASED ON COMPLETED QUESTS</span></div>
+      <div id="attributesList" class="attribute-list"></div>
+      <div class="section-heading"><div><span class="section-index">02 //</span><h2>ACHIEVEMENTS</h2></div></div>
+      <div id="achievements" class="achievement-grid"></div>
+      <div class="section-heading"><div><span class="section-index">03 //</span><h2>CAREER RECORD</h2></div></div>
+      <div class="record-grid"><div class="record-card"><span>TOTAL XP</span><strong id="recordXP">0</strong></div><div class="record-card"><span>QUESTS CLAIMED</span><strong id="recordQuests">0</strong></div><div class="record-card"><span>WALKS LOGGED</span><strong id="recordWalks">0</strong></div><div class="record-card"><span>WORKOUTS LOGGED</span><strong id="recordWorkouts">0</strong></div></div>
+    </section>
+
+    <section class="page" id="page-focus">
+      <div class="page-title"><span class="section-index">04 //</span><h1>FOCUS PROTOCOL</h1><p>Put the phone down. Work on what matters.</p></div>
+      <article class="panel focus-panel"><div class="focus-orbit"><div class="focus-inner"><span id="focusState">READY</span><strong id="timerDisplay">25:00</strong><small>MINUTES:SECONDS</small></div></div><div class="focus-presets"><button class="preset active" data-minutes="25">25 MIN</button><button class="preset" data-minutes="45">45 MIN</button><button class="preset" data-minutes="60">60 MIN</button></div><div class="focus-actions"><button id="focusStart" class="primary-button">▶ START SESSION</button><button id="focusReset" class="secondary-button">RESET</button></div><p id="focusHint" class="focus-hint">Choose a duration, start the session, then leave your phone alone. The timer does not block other apps.</p></article>
+      <div class="section-heading"><div><span class="section-index">01 //</span><h2>FOCUS RECORD</h2></div></div><div class="report-grid"><div class="report-card"><span class="muted-label">SESSIONS TODAY</span><strong id="focusSessions">0</strong><small>COMPLETED SESSIONS</small></div><div class="report-card"><span class="muted-label">FOCUS MINUTES</span><strong id="focusMinutes">0</strong><small>TODAY'S TOTAL</small></div></div>
+      <div class="system-message"><span class="message-symbol">i</span><div><strong>FOCUS PROTOCOL</strong><p>AWAKEN cannot currently read Android's system-wide screen time or prevent other apps from opening. You can log your screen-time goal manually in Settings.</p></div></div>
+    </section>
+
+    <section class="page" id="page-settings">
+      <div class="page-title"><span class="section-index">05 //</span><h1>SYSTEM SETTINGS</h1><p>Configure your personal hunter system.</p></div>
+      <article class="panel settings-panel">
+        <label class="field-label" for="nameInput">HUNTER NAME</label><input id="nameInput" maxlength="18" placeholder="PLAYER">
+        <label class="field-label" for="screenGoalInput">DAILY SCREEN-TIME GOAL (MINUTES)</label><input id="screenGoalInput" type="number" min="15" max="1440" step="15" value="120">
+        <label class="field-label" for="screenActualInput">TODAY'S SCREEN TIME (MINUTES)</label><input id="screenActualInput" type="number" min="0" max="1440" step="5" value="0">
+        <button id="saveSettings" class="primary-button full-width">SAVE SETTINGS</button>
+      </article>
+      <div class="section-heading"><div><span class="section-index">01 //</span><h2>DATA MANAGEMENT</h2></div></div>
+      <div class="settings-actions"><button id="exportBtn" class="secondary-button">⇩ EXPORT BACKUP</button><label class="secondary-button import-label">⇧ IMPORT BACKUP<input id="importFile" type="file" accept="application/json" hidden></label><button id="resetBtn" class="danger-button">RESET ALL PROGRESS</button></div>
+      <p class="fine-print">Your profile and quest history are stored in this browser on this device. Clearing browser data may erase progress. Export a backup regularly. AWAKEN is a personal project and does not provide medical advice.</p>
+      <div class="footer-mark">AWAKEN SYSTEM <span>BUILD 0.1.0</span></div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Main navigation">
+    <button class="nav-item active" data-page="home"><span>⌂</span><small>STATUS</small></button>
+    <button class="nav-item" data-page="quests"><span>▤</span><small>QUESTS</small></button>
+    <button class="nav-item" data-page="character"><span>◇</span><small>HUNTER</small></button>
+    <button class="nav-item" data-page="focus"><span>◷</span><small>FOCUS</small></button>
+    <button class="nav-item" data-page="settings"><span>⚙</span><small>SETTINGS</small></button>
+  </nav>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="levelModal" class="modal hidden"><div class="modal-card"><span class="modal-overline">SYSTEM ANNOUNCEMENT</span><div class="modal-symbol">✦</div><h2 id="levelModalTitle">LEVEL UP</h2><p id="levelModalText">Your strength has increased.</p><button id="closeModal" class="primary-button">ACKNOWLEDGE</button></div></div>
+  <script src="app.js"></script>
+</body>
+</html>
